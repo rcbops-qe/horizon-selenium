@@ -21,7 +21,7 @@ Ensure you use a version older than 46.0.1 to avoid ghostdriver issues.
     . ~/venv/horizon-sel/bin/activate
 
 -Required: These steps are needed everytime you rebuild the project.
-    cd /opt && git clone https://github.com/rcbops-qe/horizon-selenium.git
+    cd /opt && git clone https://github.com/Rydor/horizon-selenium.git
     cd horizon-selenium
     mv ~/.pip/pip.conf ~/.pip/pip2.conf
     pip install -r requirements.txt
