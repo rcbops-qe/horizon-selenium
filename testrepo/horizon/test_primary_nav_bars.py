@@ -10,7 +10,7 @@ class NavBarTest(unittest.TestCase, basesetup.BaseSetup):
 
     def test_project_panel(self):
         session = NavigationBars(self.driver)
-        session.click_project_panel()
+        session.expand_project_panel()
         self.assertIn("sidebar-accordion-project", self.driver.current_url)
 
     def test_admin_panel(self):
