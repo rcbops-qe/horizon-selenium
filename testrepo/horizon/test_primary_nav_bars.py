@@ -15,12 +15,12 @@ class NavBarTest(unittest.TestCase, basesetup.BaseSetup):
 
     def test_admin_panel(self):
         session = NavigationBars(self.driver)
-        session.click_admin_panel()
+        session.expand_admin_panel()
         self.assertIn("sidebar-accordion-admin", self.driver.current_url)
 
     def test_identity_panel(self):
         session = NavigationBars(self.driver)
-        session.click_identity_panel()
+        session.expand_identity_panel()
         self.assertIn("sidebar-accordion-identity", self.driver.current_url)
 
     def tearDown(self):
