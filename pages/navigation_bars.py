@@ -160,7 +160,6 @@ class NavigationBars(basepage.BasePage):
         self.driver.find_element_by_css_selector(
             'a[href="/project/containers/"]').click()
 
-
     """
     Admin > System > Resource
     """
