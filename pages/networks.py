@@ -1,5 +1,5 @@
 import basepage
-
+from selenium.webdriver.support.ui import Select
 
 class NetworksPageObjects(basepage.BasePage):
 
@@ -37,6 +37,42 @@ class CreateNetwork(basepage.BasePage):
             '.form-control .dropdown-toggle').click()
         self.driver.find_element_by_css_selector(
             'a[data-select-value="{0}"]'.format(state)).click()
+
+    def toggle_shared_checkbox(self):
+        pass
+
+    def toggle_create_shortcut_checkbox(self):
+        pass
+
+    def toggle_disable_gateway_checkbox(self):
+        pass
+
+    def input_subnet_name(self, text):
+        text_field = self.driver.find_element_by_name(
+            'id_subnet_name')
+        text_field.clear()
+        text_field.send_keys(text)
+
+    def input_network_address(self, text):
+        text_field = self.driver.find_element_by_name(
+            'id_cidr')
+        text_field.clear()
+        text_field.send_keys(text)
+
+    def input_gateway_ip(self, text):
+        text_field = self.driver.find_element_by_name(
+            'id_gateway_ip')
+        text_field.clear()
+        text_field.send_keys(text)
+
+    def select_ip_version(self, version='4'):
+        ipv = Select(self.driver.find_element_by_id('id_ip_version'))
+        if version == '4':
+            ipv.select_by_value('4')
+        elif version == '6':
+            ipv.select_by_value('6')
+        else:
+            print "Valid options are 4 and 6. {0} was provided".format(version)
 
 
 class FilterNetworks(basepage.BasePage):
