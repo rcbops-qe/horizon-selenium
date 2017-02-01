@@ -16,11 +16,24 @@ class NetworksPageObjects(basepage.BasePage):
         self.driver.find_element_by_class_name(
             'data-table-action').click()
 
-    def network_dropdown_actions(self):
-        pass
-    
+    def click_network_dropdown_actions(self):
+        self.driver.find_element_by_css_selector(
+            '#networks tbody .actions_column .dropdown-toggle').click()
+
+    def click_add_subnet_dropdown(self):
+        self.driver.find_elements_by_css_selector(
+            '#networks tbody .actions_column li')[0].click()
+
+    def click_delete_network_dropdown(self):
+        self.driver.find_elements_by_css_selector(
+            '#networks tbody .actions_column li')[1].click()
+
+    def click_network_details(self):
+        self.driver.find_element_by_css_selector(
+            '#networks tbody .word-break a').click()
+
     """
-    Seach Filter Options
+    Search Filter Options
     """
     def search_networks(self, criteria, text):
         self.select_filter_criteria(criteria)
