@@ -1,4 +1,5 @@
 import basepage
+import time
 from selenium.webdriver.support.ui import Select
 
 
@@ -162,6 +163,7 @@ class NetworksPageObjects(basepage.BasePage):
             self.select_ip_version()
             self.click_next()
             self.click_create()
+            time.sleep(5)
 
     def toggle_shared_checkbox(self):
         pass

@@ -47,7 +47,7 @@ class BaseSetup(object):
             # caps["marionette"] = True
             # self.driver = webdriver.Firefox(proxy=proxy)
             # self.driver = webdriver.Firefox(capabilities=caps)
-            # self.driver = webdriver.Firefox()
+            self.driver = webdriver.Firefox()
 
             """
             This will create the session within which all actions take place

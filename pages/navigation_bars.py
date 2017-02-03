@@ -1,4 +1,5 @@
 import basepage
+import time
 
 
 class NavigationBars(basepage.BasePage):
@@ -45,6 +46,7 @@ class NavigationBars(basepage.BasePage):
 
     def expand_project_compute(self):
         NavigationBars.expand_project_panel(self)
+        time.sleep(1)
         elm = self.driver.find_element_by_css_selector(
             'a[data-target="#sidebar-accordion-project-compute"]')
         state = elm.get_attribute('class')
@@ -60,6 +62,7 @@ class NavigationBars(basepage.BasePage):
 
     def click_project_compute_instance(self):
         NavigationBars.expand_project_compute(self)
+        time.sleep(3)
         self.driver.find_element_by_css_selector(
             'a[href="/project/instances/"]').click()
 
@@ -88,6 +91,7 @@ class NavigationBars(basepage.BasePage):
             'a[data-target="#sidebar-accordion-project-network"]')
         state = elm.get_attribute('class')
         if 'collapsed' in state:
+            time.sleep(1)
             elm.click()
         else:
             pass
@@ -99,6 +103,7 @@ class NavigationBars(basepage.BasePage):
 
     def click_project_network_networks(self):
         NavigationBars.expand_project_network(self)
+        time.sleep(1)
         self.driver.find_element_by_css_selector(
             'a[href="/project/networks/"]').click()
 

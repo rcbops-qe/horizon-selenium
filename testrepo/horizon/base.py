@@ -90,7 +90,7 @@ class HorizonBase(unittest.TestCase):
             project_panel = self.driver.find_element_by_css_selector('a[href="#sidebar-accordion-project"]')
             admin_panel = self.driver.find_element_by_css_selector('a[href="#sidebar-accordion-admin"]')
             identity_panel = self.driver.find_element_by_css_selector('a[href="#sidebar-accordion-identity"]')
-            #developer_panel = self.driver.find_element_by_css_selector('a[href="#sidebar-accordion-developer"]')
+            developer_panel = self.driver.find_element_by_css_selector('a[href="#sidebar-accordion-developer"]')
             panels = [project_panel, admin_panel, identity_panel]
             for i in panels:
                 i.click()

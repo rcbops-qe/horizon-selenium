@@ -1,5 +1,7 @@
 import basepage
+import time
 from selenium.webdriver.support.ui import Select
+
 
 class InstancesPageObject(basepage.BasePage):
 
@@ -75,7 +77,7 @@ class InstancesPageObject(basepage.BasePage):
     def select_availability_zone(self, zone='nova'):
         pass
 
-    def select_instance_count(self, count):
+    def select_instance_count(self, count='1'):
         inst_count = self.driver.find_element_by_css_selector(
             '#instance-count')
         inst_count.clear()
@@ -89,4 +91,36 @@ class InstancesPageObject(basepage.BasePage):
         boot_source = Select(self.driver.find_element_by_css_selector(
             '#boot-source-type'))
         boot_source.select_by_value(source)
-    
+
+    def select_first_image_source(self):
+        self.driver.find_elements_by_css_selector(
+            'hz-magic-search-context > table.table-rsp '
+            '> tbody td.actions_column')[0].click()
+
+    def select_first_flavor(self):
+        self.driver.find_elements_by_css_selector(
+            'hz-magic-search-context > table.table-rsp '
+            '> tbody td.action-col')[0].click()
+
+    def select_first_network(self):
+        self.driver.find_elements_by_css_selector(
+            'table.table-rsp > tbody td.actions_column '
+            'action-list.ng-isolate-scope')[0].click()
+
+    def create_default_instance(self, text):
+        state = self.is_instance_present(text)
+        if state is True:
+            print "Instance already exists."
+        else:
+            print "Instance did not exist."
+            self.click_launch_instance()
+            self.input_instance_name(text)
+            self.click_next()
+            self.select_boot_source(source='image')
+            self.select_first_image_source()
+            self.click_next()
+            self.select_first_flavor()
+            self.click_next()
+            self.select_first_network()
+            self.click_launch_instance_wizard_button()
+            time.sleep(5)
